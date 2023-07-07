@@ -3,6 +3,7 @@ const express = require('express')
 const app = express()
 const cors = require('cors')
 const Blog = require('./models/blog')
+const config = require('./utils/config')
 const info = require('./utils/logger')
 
 app.use(cors())
@@ -26,7 +27,7 @@ app.post('/api/blogs', (request, response) => {
         })
 })
 
-const PORT = 3003
+const PORT = config.PORT
 app.listen(PORT, () => {
     info(`Server running on port ${PORT}`)
 })
