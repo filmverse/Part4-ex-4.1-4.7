@@ -3,13 +3,13 @@ const blog = require('../models/blog')
 const Blog = require('../models/blog')
 
 
-blogsRouter('/', (request, response) => {
+blogsRouter.get('/', (request, response) => {
     Blog.find({}).then(blogs => {
         response.json(blogs)
     })
 })
 
-blogsRouter('/', (request, response) => {
+blogsRouter.post('/', (request, response) => {
     const blog = new Blog(request.body)
     blog.save().then(result => {
         response.status(201).json(result)
